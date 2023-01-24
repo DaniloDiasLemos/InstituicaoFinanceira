@@ -12,4 +12,8 @@ public class Cliente extends Pessoa {
         this.agenciaBancaria = agenciaBancaria;
     }
 
+    public Cliente(int CPF, String nome) {
+       super(CPF,nome);
+    }
+
 }
