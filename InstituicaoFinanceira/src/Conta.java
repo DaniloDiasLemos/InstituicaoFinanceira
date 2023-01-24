@@ -1,3 +1,4 @@
+import java.util.List;
 
 public class Conta {
     protected int nroDaConta;
@@ -6,8 +7,12 @@ public class Conta {
     protected String dataUltimaMovimentacao;
     protected int agenciaBancaria;
     protected boolean ativa;
-
     private String senha;
+
+    /*Toda conta bancária deve ter no mínimo um cliente associado. No entanto, uma conta pode ser
+        conjunta. Nesse caso, é possível ter dois clientes associados à mesma conta. Um mesmo cliente
+        pode ter diferentes contas bancárias.*/
+    protected List<Cliente> cliente;
 
     public Conta() {
     }
@@ -47,6 +52,8 @@ public class Conta {
 
     public void setStatusConta(boolean status) { this.ativa = status; }
 
+    public boolean isAtiva() { return ativa; }
+
     public String getSenha() { return senha; }
 
     public void setSenha(String senha) {
@@ -61,4 +68,8 @@ public class Conta {
         else
             return false;
     }
+
+    public List<Cliente> getCliente() { return cliente; }
+
+    public void setCliente(List<Cliente> cliente) { this.cliente = cliente; }
 }
