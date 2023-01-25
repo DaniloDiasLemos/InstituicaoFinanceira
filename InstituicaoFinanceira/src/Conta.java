@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class Conta {
+public abstract class Conta {
     protected int nroDaConta;
     protected double saldoAtual;
     protected String dataAbertura;

@@ -1,6 +1,6 @@
 import java.util.InputMismatchException;
 
-public class Pessoa {
+public abstract class Pessoa {
     private int CPF;
     private String nome;
     private String endereco;
