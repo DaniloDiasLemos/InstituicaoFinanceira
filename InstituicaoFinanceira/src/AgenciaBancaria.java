@@ -1,9 +1,16 @@
+import java.util.ArrayList;
+
 public class AgenciaBancaria {
     private int numero;
     private String nome;
     private String cidade;
     private String estado;
     private String bairro;
+
+    private ArrayList<Conta> contas;
+    private ArrayList<Funcionario> funcionarios;
+
+
 
     public AgenciaBancaria() {
 
@@ -15,6 +22,33 @@ public class AgenciaBancaria {
         this.cidade = cidade;
         this.estado = estado;
         this.bairro = bairro;
+        contas = new ArrayList<>();
+        funcionarios = new ArrayList<>();
+    }
+
+    public void adicionarConta(Conta conta) {
+        contas.add(conta);
+    }
+
+    public void adicionarFuncionario(Funcionario funcionario) {
+        funcionarios.add(funcionario);
+    }
+
+    //GETTER E SETTERS
+    public ArrayList<Conta> getContas() {
+        return contas;
+    }
+
+    public void setContas(ArrayList<Conta> contas) {
+        this.contas = contas;
+    }
+
+    public ArrayList<Funcionario> getFuncionarios() {
+        return funcionarios;
+    }
+
+    public void setFuncionarios(ArrayList<Funcionario> funcionarios) {
+        this.funcionarios = funcionarios;
     }
 
     public int getNumero() { return numero; }

@@ -1,11 +1,12 @@
 import java.util.List;
+import java.util.Random;
 
 public abstract class Conta {
     protected int nroDaConta;
     protected double saldoAtual;
     protected String dataAbertura;
     protected String dataUltimaMovimentacao;
-    protected int agenciaBancaria;
+    protected AgenciaBancaria agencia;
     protected boolean ativa;
     private String senha;
 
@@ -13,16 +14,19 @@ public abstract class Conta {
         conjunta. Nesse caso, é possível ter dois clientes associados à mesma conta. Um mesmo cliente
         pode ter diferentes contas bancárias.*/
     protected List<Cliente> cliente;
+    Random random = new Random();
 
     public Conta() {
     }
 
-    public Conta(int nroDaConta, double saldoAtual, String dataAbertura, String dataUltimaMovimentacao, int agenciaBancaria) {
-        this.nroDaConta = nroDaConta;
+    public Conta(double saldoAtual, String dataAbertura, String dataUltimaMovimentacao, AgenciaBancaria agenciaBancaria, Cliente cliente1) {
+        this.nroDaConta = random.nextInt(900)+100; // Quando uma conta for criada, o construtor vai gerar um número de conta aleatório de 3 digitos
         this.saldoAtual = saldoAtual;
         this.dataAbertura = dataAbertura;
         this.dataUltimaMovimentacao = dataUltimaMovimentacao;
-        this.agenciaBancaria = agenciaBancaria;
+        this.agencia = agenciaBancaria;
+        cliente.add(cliente1);
+        agenciaBancaria.adicionarConta(this);
     }
 
     public int getNroDaConta() { return nroDaConta; }
@@ -41,9 +45,13 @@ public abstract class Conta {
 
     public void setDataUltimaMovimentacao(String dataUltimaMovimentacao) { this.dataUltimaMovimentacao = dataUltimaMovimentacao; }
 
-    public int getAgenciaBancaria() { return agenciaBancaria; }
+    public AgenciaBancaria getAgencia() {
+        return agencia;
+    }
 
-    public void setAgenciaBancaria(int agenciaBancaria) { this.agenciaBancaria = agenciaBancaria; }
+    public void setAgencia(AgenciaBancaria agencia) {
+        this.agencia = agencia;
+    }
 
     public int getNroConta() {
         return nroDaConta;
