@@ -1,3 +1,6 @@
+import persist.Persist;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -9,6 +12,8 @@ public abstract class Conta {
     protected AgenciaBancaria agencia;
     protected boolean ativa;
     private String senha;
+
+    private final String arquivo = "contas.bin";
 
     /*Toda conta bancária deve ter no mínimo um cliente associado. No entanto, uma conta pode ser
         conjunta. Nesse caso, é possível ter dois clientes associados à mesma conta. Um mesmo cliente
@@ -80,4 +85,21 @@ public abstract class Conta {
     public List<Cliente> getCliente() { return cliente; }
 
     public void setCliente(List<Cliente> cliente) { this.cliente = cliente; }
+
+    // Salva as contas em um arquivo binário
+    public void gravarcontas(ArrayList<Conta> contas) {
+        boolean salvo = true;
+
+        if (!contas.isEmpty()) {
+            for (Conta c : contas) {
+                salvo = salvo && Persist.gravar(c, this.arquivo);
+            }
+
+            if (salvo)
+                System.out.println("Sucesso. As contas foram salvas com sucesso!");
+            else
+                throw new RuntimeException("Erro. Ocorreu um erro ao salvar as contas, tente novamente!");
+        } else
+            throw new RuntimeException("Erro. Sem registros para salvar!");
+    }
 }
