@@ -1,7 +1,7 @@
 import java.util.InputMismatchException;
 
 public abstract class Pessoa {
-    private int CPF;
+    private String CPF;
     private String nome;
     private String endereco;
     private String estadoCivil;
@@ -10,7 +10,8 @@ public abstract class Pessoa {
     public Pessoa(){
     }
 
-    public Pessoa(int CPF, String nome, String endereco, String estadoCivil, String dataNascimento){
+    public Pessoa(String CPF, String nome, String endereco, String estadoCivil, String dataNascimento){
+        this.cpfValido(CPF);
         this.CPF = CPF;
         this.nome = nome;
         this.endereco = endereco;
@@ -18,7 +19,7 @@ public abstract class Pessoa {
         this.dataNascimento = dataNascimento;
     }
 
-    public Pessoa(int CPF, String nome){
+    public Pessoa(String CPF, String nome){
         this.CPF = CPF;
         this.nome = nome;
     }
@@ -71,9 +72,9 @@ public abstract class Pessoa {
         }
     }
 
-    public int getCPF() { return CPF; }
+    public String getCPF() { return CPF; }
 
-    public void setCPF(int CPF) { this.CPF = CPF; }
+    public void setCPF(String CPF) { this.CPF = CPF; }
 
     public String getNome() { return nome; }
 

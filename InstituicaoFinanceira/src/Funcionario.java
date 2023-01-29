@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Funcionario extends Pessoa {
 
     private final String arquivo = "funcionarios.bin";
-    protected int CPF;
+    protected String CPF;
     protected String nome;
     protected int nroCarteiraDeTrabalho;
     protected int RG;
@@ -23,7 +23,7 @@ public class Funcionario extends Pessoa {
     }
 
     public Funcionario(
-            int CPF, String nome, int nroCarteiraDeTrabalho, int RG, String dataNascimento, String endereco,
+            String CPF, String nome, int nroCarteiraDeTrabalho, int RG, String dataNascimento, String endereco,
             String sexo, String estadoCivil, String cargo, double salario, int anoDeIngresso) {
         super(CPF, nome, endereco, estadoCivil, dataNascimento);
         this.nroCarteiraDeTrabalho = nroCarteiraDeTrabalho;
