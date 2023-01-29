@@ -23,7 +23,6 @@ public class Gerente extends Funcionario {
         System.out.println("Comissão: " + comissao);
     }
 
-    
     // método para calcular Salario para gerentes, calculado pela
     // soma do salário de um funcionário comum acrescido pela comissão recebida por
     // gerenciar
