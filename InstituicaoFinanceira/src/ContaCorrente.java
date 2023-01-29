@@ -1,4 +1,4 @@
-public class ContaCorrente extends Conta {
+public class ContaCorrente extends Conta implements Bonificacao {
     private double limiteChequeEspecial;
     private double taxaAdministrativa;
 
@@ -23,6 +23,12 @@ public class ContaCorrente extends Conta {
 
     public void setTaxaAdministrativa(double taxaAdministrativa) {
         this.taxaAdministrativa = taxaAdministrativa;
+    }
+
+    public void darBrindes ()
+    {
+        //Quando ativar esse metódo será dado R$10,00 para os clientes da conta gastar como quiser;
+        setSaldoAtual(getSaldoAtual() + 10);
     }
 }
 

@@ -1,12 +1,14 @@
 import persist.Persist;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class Cliente extends Pessoa {
+public class Cliente extends Pessoa implements Bonificacao {
     private String escolaridade;
     private AgenciaBancaria agenciaBancaria;
     private static final String arquivo = "clientes.bin";
 
+    protected List<Conta> contas;
     public Cliente() {
     }
 
@@ -40,5 +42,11 @@ public class Cliente extends Pessoa {
                 throw new RuntimeException("Erro. Ocorreu um erro ao salvar os clientes, tente novamente!");
         } else
             throw new RuntimeException("Erro. Sem registros para salvar!");
+    }
+
+    public void darBrindes()
+    {
+        for (int i = 0; i < contas.size(); i++)
+        contas.get(i).setSaldoAtual(contas.get(i).getSaldoAtual() + 10);
     }
 }
