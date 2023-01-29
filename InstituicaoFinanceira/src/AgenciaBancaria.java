@@ -1,3 +1,5 @@
+import persist.Persist;
+
 import java.util.ArrayList;
 
 public class AgenciaBancaria {
@@ -7,10 +9,10 @@ public class AgenciaBancaria {
     private String estado;
     private String bairro;
 
+    private final String arquivo = "agencias.bin";
+
     private ArrayList<Conta> contas;
     private ArrayList<Funcionario> funcionarios;
-
-
 
     public AgenciaBancaria() {
 
@@ -70,5 +72,24 @@ public class AgenciaBancaria {
     public String getBairro() { return bairro; }
 
     public void setBairro(String bairro) { this.bairro = bairro;  }
+
+    // Salva as agências no arquivo binário
+    public void gravarAgencias(ArrayList<AgenciaBancaria> agencias) {
+        boolean salvo = true;
+
+        if (agencias.isEmpty()) {
+            for (AgenciaBancaria a : agencias) {
+                salvo = salvo && Persist.gravar(a, this.arquivo);
+            }
+
+            if (salvo)
+                System.out.println("Sucesso. Agências salvas com sucesso!");
+            else
+                throw new RuntimeException("Erro. Ocorreu um erro ao salvar as agências, tente novamente!");
+        } else {
+            throw new RuntimeException("Erro. Sem registros para salvar!");
+        }
+
+    }
 
 }
