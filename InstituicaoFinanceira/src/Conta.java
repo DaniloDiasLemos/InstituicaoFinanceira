@@ -1,5 +1,7 @@
 import persist.Persist;
 
+import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -7,6 +9,9 @@ import java.util.Random;
 public abstract class Conta {
     protected int nroDaConta;
     protected double saldoAtual;
+
+    Date dataAtual = new Date();
+    SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
     protected String dataAbertura;
     protected String dataUltimaMovimentacao;
     protected AgenciaBancaria agencia;
@@ -24,11 +29,10 @@ public abstract class Conta {
     public Conta() {
     }
 
-    public Conta(double saldoAtual, String dataAbertura, String dataUltimaMovimentacao, AgenciaBancaria agenciaBancaria, Cliente cliente1) {
+    public Conta(double saldoAtual, AgenciaBancaria agenciaBancaria, Cliente cliente1) {
         this.nroDaConta = random.nextInt(900)+100; // Quando uma conta for criada, o construtor vai gerar um número de conta aleatório de 3 digitos
         this.saldoAtual = saldoAtual;
-        this.dataAbertura = dataAbertura;
-        this.dataUltimaMovimentacao = dataUltimaMovimentacao;
+        this.dataAbertura = formatoData.format(dataAtual);
         this.agencia = agenciaBancaria;
         cliente.add(cliente1);
         agenciaBancaria.adicionarConta(this);
