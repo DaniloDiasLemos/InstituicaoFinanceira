@@ -1,9 +1,13 @@
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Random;
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
+        Random random = new Random();
 
         System.out.println("Quantas agencias deseja cadastrar?");
         int qtdAgencias = sc.nextInt();
@@ -29,11 +33,6 @@ public class App {
             agencias.add(agencia[i]);
         }
 
-        for (int i = 0; i < agencia.length; i++) {
-            System.out.println(agencia[i].getNome());
-            System.out.println("");
-        }
-
         for (int i = 0; i < cliente.length; i++) {
             cliente[i] = new Cliente();
             System.out.println("Digite o nome do " + (i + 1) + "° cliente: ");
@@ -48,13 +47,30 @@ public class App {
             cliente[i].setEscolaridade(sc.next());
             System.out.println("Digite a data de nascimento do " + (i + 1) + "° cliente: ");
             cliente[i].setDataNascimento(sc.next());
+            // adiciona uma agencia aleatoria ao cliente
+            cliente[i].setAgenciaBancaria(agencia[(0 + (int) (Math.random() * ((qtdAgencias - 0))))]);
             System.out.println("");
-            clientes.add(cliente[i]);
-        }
+            System.out.println("Qual tipo de conta do cliente? (1-corrente; 2-poupança; 3-salario)");
+            int tipoConta = sc.nextInt();
+            String todayDate = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+            if (tipoConta == 1) {
+                ContaCorrente conta = new ContaCorrente(0, todayDate, todayDate, 0, 0, cliente[i].getAgenciaBancaria(),
+                        cliente[i]);
+                cliente[i].adicionarConta(conta);
+            } else {
+                if (tipoConta == 2) {
+                    Conta conta = new ContaPoupanca(0, todayDate, todayDate, 0, cliente[i].getAgenciaBancaria(),
+                            cliente[i]);
+                    cliente[i].adicionarConta(conta);
+                } else {
+                    Conta conta = new ContaSalario(0, todayDate, todayDate, 0, 0, cliente[i].getAgenciaBancaria(),
+                            cliente[i]);
+                    cliente[i].adicionarConta(conta);
+                }
+            }
+            ;
 
-        for (int i = 0; i < cliente.length; i++) {
-            System.out.println(cliente[i].getNome());
-            System.out.println("");
+            clientes.add(cliente[i]);
         }
 
         Cliente.gravarClientes(clientes);

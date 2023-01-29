@@ -7,8 +7,8 @@ public class Cliente extends Pessoa implements Bonificacao {
     private String escolaridade;
     private AgenciaBancaria agenciaBancaria;
     private static final String arquivo = "clientes.bin";
-
     protected List<Conta> contas;
+
     public Cliente() {
     }
 
@@ -17,15 +17,33 @@ public class Cliente extends Pessoa implements Bonificacao {
         super(CPF, nome, endereco, estadoCivil, dataNascimento);
         this.escolaridade = escolaridade;
         this.agenciaBancaria = agenciaBancaria;
+        this.contas = new ArrayList<>();
     }
 
     public Cliente(String CPF, String nome) {
-       super(CPF,nome);
+        super(CPF, nome);
     }
 
-    public void setEscolaridade(String escolaridade) { this.escolaridade = escolaridade; }
+    public void adicionarConta(Conta conta) {
+        this.contas = new ArrayList<>();
+        this.contas.add(conta);
+    }
 
-    public void setAgenciaBancaria(AgenciaBancaria agenciaBancaria) { this.agenciaBancaria = agenciaBancaria; }
+    public void setEscolaridade(String escolaridade) {
+        this.escolaridade = escolaridade;
+    }
+
+    public void setAgenciaBancaria(AgenciaBancaria agenciaBancaria) {
+        this.agenciaBancaria = agenciaBancaria;
+    }
+
+    public String getEscolaridade() {
+        return this.escolaridade;
+    }
+
+    public AgenciaBancaria getAgenciaBancaria() {
+        return this.agenciaBancaria;
+    }
 
     // Salva os clientes em um arquivo binário
     public static void gravarClientes(ArrayList<Cliente> clientes) {
@@ -44,10 +62,10 @@ public class Cliente extends Pessoa implements Bonificacao {
             throw new RuntimeException("Erro. Sem registros para salvar!");
     }
 
-    public void darBrindes()
-    {
-        //Quando ativar esse metódo será dado R$10,00 para todas as contas do cliente para gastar como quiser;
+    public void darBrindes() {
+        // Quando ativar esse metódo será dado R$10,00 para todas as contas do cliente
+        // para gastar como quiser;
         for (int i = 0; i < contas.size(); i++)
-        contas.get(i).setSaldoAtual(contas.get(i).getSaldoAtual() + 10);
+            contas.get(i).setSaldoAtual(contas.get(i).getSaldoAtual() + 10);
     }
 }

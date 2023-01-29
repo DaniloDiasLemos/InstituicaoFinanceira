@@ -7,10 +7,10 @@ public abstract class Pessoa {
     private String estadoCivil;
     private String dataNascimento;
 
-    public Pessoa(){
+    public Pessoa() {
     }
 
-    public Pessoa(String CPF, String nome, String endereco, String estadoCivil, String dataNascimento){
+    public Pessoa(String CPF, String nome, String endereco, String estadoCivil, String dataNascimento) {
         this.cpfValido(CPF);
         this.CPF = CPF;
         this.nome = nome;
@@ -19,7 +19,7 @@ public abstract class Pessoa {
         this.dataNascimento = dataNascimento;
     }
 
-    public Pessoa(String CPF, String nome){
+    public Pessoa(String CPF, String nome) {
         this.CPF = CPF;
         this.nome = nome;
     }
@@ -72,23 +72,43 @@ public abstract class Pessoa {
         }
     }
 
-    public String getCPF() { return CPF; }
+    public String getCPF() {
+        return CPF;
+    }
 
-    public void setCPF(String CPF) { this.CPF = CPF; }
+    public void setCPF(String CPF) {
+        this.CPF = CPF;
+    }
 
-    public String getNome() { return nome; }
+    public String getNome() {
+        return nome;
+    }
 
-    public void setNome(String nome) { this.nome = nome; }
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-    public String getEndereco() { return endereco; }
+    public String getEndereco() {
+        return endereco;
+    }
 
-    public void setEndereco(String endereco) { this.endereco = endereco; }
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
 
-    public String getEstadoCivil() { return estadoCivil; }
+    public String getEstadoCivil() {
+        return estadoCivil;
+    }
 
-    public void setEstadoCivil(String estadoCivil) { this.estadoCivil = estadoCivil; }
+    public void setEstadoCivil(String estadoCivil) {
+        this.estadoCivil = estadoCivil;
+    }
 
-    public String getDataNascimento() { return dataNascimento; }
+    public String getDataNascimento() {
+        return dataNascimento;
+    }
 
-    public void setDataNascimento(String dataNascimento) { this.dataNascimento = dataNascimento; }
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
 }

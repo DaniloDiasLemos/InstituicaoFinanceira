@@ -29,6 +29,7 @@ public class AgenciaBancaria {
     }
 
     public void adicionarConta(Conta conta) {
+        contas = new ArrayList<>();
         contas.add(conta);
     }
 
@@ -36,7 +37,7 @@ public class AgenciaBancaria {
         funcionarios.add(funcionario);
     }
 
-    //GETTER E SETTERS
+    // GETTER E SETTERS
     public ArrayList<Conta> getContas() {
         return contas;
     }
@@ -53,25 +54,45 @@ public class AgenciaBancaria {
         this.funcionarios = funcionarios;
     }
 
-    public int getNumero() { return numero; }
+    public int getNumero() {
+        return numero;
+    }
 
-    public void setNumero(int numero) { this.numero = numero; }
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
 
-    public String getNome() { return nome; }
+    public String getNome() {
+        return nome;
+    }
 
-    public void setNome(String nome) { this.nome = nome; }
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-    public String getCidade() { return cidade; }
+    public String getCidade() {
+        return cidade;
+    }
 
-    public void setCidade(String cidade) { this.cidade = cidade; }
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
 
-    public String getEstado() { return estado; }
+    public String getEstado() {
+        return estado;
+    }
 
-    public void setEstado(String estado) { this.estado = estado; }
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
 
-    public String getBairro() { return bairro; }
+    public String getBairro() {
+        return bairro;
+    }
 
-    public void setBairro(String bairro) { this.bairro = bairro;  }
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
 
     // Salva as agências no arquivo binário
     public void gravarAgencias(ArrayList<AgenciaBancaria> agencias) {
