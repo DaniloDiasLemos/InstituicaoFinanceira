@@ -2,9 +2,9 @@ public class ContaCorrente extends Conta implements Bonificacao {
     private double limiteChequeEspecial;
     private double taxaAdministrativa;
 
-    public ContaCorrente(double saldoAtual, String dataAbertura, String dataUltimaMovimentacao,
-            double limiteChequeEspecial, double taxaAdministrativa, AgenciaBancaria agenciaBancaria, Cliente cliente1) {
-        super(saldoAtual, dataAbertura, dataUltimaMovimentacao, agenciaBancaria, cliente1);
+    public ContaCorrente(double saldoAtual, double limiteChequeEspecial, double taxaAdministrativa,
+            AgenciaBancaria agenciaBancaria, Cliente cliente1) {
+        super(saldoAtual, agenciaBancaria, cliente1);
         this.limiteChequeEspecial = limiteChequeEspecial;
         this.taxaAdministrativa = taxaAdministrativa;
     }
