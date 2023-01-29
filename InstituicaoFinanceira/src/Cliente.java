@@ -46,6 +46,7 @@ public class Cliente extends Pessoa implements Bonificacao {
 
     public void darBrindes()
     {
+        //Quando ativar esse metódo será dado R$10,00 para todas as contas do cliente para gastar como quiser;
         for (int i = 0; i < contas.size(); i++)
         contas.get(i).setSaldoAtual(contas.get(i).getSaldoAtual() + 10);
     }
