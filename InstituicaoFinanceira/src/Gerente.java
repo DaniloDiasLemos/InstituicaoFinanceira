@@ -1,13 +1,13 @@
 public class Gerente extends Funcionario {
     private String dataDeIngresso;
-    private int agenciaBancaria;
+    private AgenciaBancaria agenciaBancaria;
     private boolean formacaoEmGerencia;
     static private double comissao = 0;
 
     public Gerente(
-            int CPF, String nome, int nroCarteiraDeTrabalho, int RG, String dataNascimento, String endereco,
+            String CPF, String nome, int nroCarteiraDeTrabalho, int RG, String dataNascimento, String endereco,
             String sexo, String estadoCivil, String cargo, double salario, int anoDeIngresso, String dataDeIngresso,
-            int agenciaBancaria, boolean formacaoEmGerencia) {
+            AgenciaBancaria agenciaBancaria, boolean formacaoEmGerencia) {
         super(CPF, nome, nroCarteiraDeTrabalho, RG, dataNascimento, endereco, sexo, estadoCivil, cargo, salario,
                 anoDeIngresso);
         this.dataDeIngresso = dataDeIngresso;
