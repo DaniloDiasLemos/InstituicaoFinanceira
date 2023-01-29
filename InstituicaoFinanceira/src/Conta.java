@@ -9,7 +9,6 @@ import java.util.Random;
 public abstract class Conta {
     protected int nroDaConta;
     protected double saldoAtual;
-
     Date dataAtual = new Date();
     SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
     protected String dataAbertura;
