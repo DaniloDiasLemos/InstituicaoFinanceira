@@ -4,7 +4,6 @@ import java.util.List;
 public class Cliente extends Pessoa implements Bonificacao {
     private String escolaridade;
     private AgenciaBancaria agenciaBancaria;
-    private static final String arquivo = "clientes.txt";
     protected List<Conta> contas;
 
     public Cliente() {
@@ -47,10 +46,10 @@ public class Cliente extends Pessoa implements Bonificacao {
     public static void gravarClientes(Cliente cliente) {
         boolean salvo = true;
 
-        salvo = salvo && Persist.gravarCliente(cliente, arquivo);
+        salvo = salvo && Persist.gravarCliente(cliente);
 
         if (salvo)
-            System.out.println("Sucesso. Clientes salvos com sucesso!");
+            System.out.println("Sucesso. Cliente salvo com sucesso!");
         else
             throw new RuntimeException("Erro. Ocorreu um erro ao salvar os clientes, tente novamente!");
     }

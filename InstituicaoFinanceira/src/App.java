@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
@@ -14,11 +13,12 @@ public class App {
 
         AgenciaBancaria[] agencia = new AgenciaBancaria[qtdAgencias];
         Cliente[] cliente = new Cliente[qtdClientes];
-        ArrayList<Cliente> clientes = new ArrayList<>();
-        ArrayList<AgenciaBancaria> agencias = new ArrayList<>();
 
         for (int i = 0; i < agencia.length; i++) {
             agencia[i] = new AgenciaBancaria();
+            System.out.println("Digite o numero da " + (i + 1) + "ª agencia bancaria: ");
+            agencia[i].setNumero(sc.nextInt());
+            sc.nextLine();
             System.out.println("Digite o nome da " + (i + 1) + "ª agencia bancaria: ");
             agencia[i].setNome(sc.nextLine());
             System.out.println("Digite a cidade da " + (i + 1) + "ª agencia bancaria: ");
@@ -28,7 +28,7 @@ public class App {
             System.out.println("Digite o bairro da " + (i + 1) + "ª agencia bancaria: ");
             agencia[i].setBairro(sc.nextLine());
             System.out.println("");
-            agencias.add(agencia[i]);
+            AgenciaBancaria.gravarAgencias(agencia[i]);
         }
 
         for (int i = 0; i < cliente.length; i++) {
@@ -48,7 +48,7 @@ public class App {
             // adiciona uma agencia aleatoria ao cliente
             cliente[i].setAgenciaBancaria(agencia[(0 + (int) (Math.random() * ((qtdAgencias - 0))))]);
             System.out.println("");
-            //Escolhe tipo de conta do cliente
+            // Escolhe tipo de conta do cliente
             System.out.println("Qual tipo de conta do cliente? (1-corrente; 2-poupança; 3-salario)");
             int tipoConta = sc.nextInt();
             sc.nextLine();
@@ -69,7 +69,6 @@ public class App {
             }
             ;
 
-            clientes.add(cliente[i]);
             Cliente.gravarClientes(cliente[i]);
         }
     }
