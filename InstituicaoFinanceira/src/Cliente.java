@@ -1,12 +1,10 @@
-import persist.Persist;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Cliente extends Pessoa implements Bonificacao {
     private String escolaridade;
     private AgenciaBancaria agenciaBancaria;
-    private static final String arquivo = "clientes.bin";
+    private static final String arquivo = "clientes.txt";
     protected List<Conta> contas;
 
     public Cliente() {
@@ -46,20 +44,15 @@ public class Cliente extends Pessoa implements Bonificacao {
     }
 
     // Salva os clientes em um arquivo binário
-    public static void gravarClientes(ArrayList<Cliente> clientes) {
+    public static void gravarClientes(Cliente cliente) {
         boolean salvo = true;
 
-        if (!clientes.isEmpty()) {
-            for (Cliente c : clientes) {
-                salvo = salvo && Persist.gravar(c, arquivo);
-            }
+        salvo = salvo && Persist.gravarCliente(cliente, arquivo);
 
-            if (salvo)
-                System.out.println("Sucesso. Clientes salvos com sucesso!");
-            else
-                throw new RuntimeException("Erro. Ocorreu um erro ao salvar os clientes, tente novamente!");
-        } else
-            throw new RuntimeException("Erro. Sem registros para salvar!");
+        if (salvo)
+            System.out.println("Sucesso. Clientes salvos com sucesso!");
+        else
+            throw new RuntimeException("Erro. Ocorreu um erro ao salvar os clientes, tente novamente!");
     }
 
     public void darBrindes() {

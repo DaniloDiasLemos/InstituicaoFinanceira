@@ -1,5 +1,3 @@
-import persist.Persist;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 
