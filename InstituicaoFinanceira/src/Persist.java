@@ -15,7 +15,7 @@ public class Persist {
 		try {
 			FileWriter arq = new FileWriter("src/Clientes/" + cliente.getCPF() + ".txt");
 			PrintWriter out = new PrintWriter(arq);
-			String linha = cliente.getNome() + ":" + cliente.getCPF() + ":" + cliente.getEndereco() + ":" + cliente.getEscolaridade() + ":" + cliente.getEndereco() + ":" + cliente.getEstadoCivil() + ":" + cliente.getDataNascimento() + ":" + cliente.getAgenciaBancaria();
+			String linha = cliente.getNome() + ":" + cliente.getCPF() + ":" + cliente.getEndereco() + ":" + cliente.getEscolaridade() + ":" + cliente.getEstadoCivil() + ":" + cliente.getDataNascimento() + ":" + cliente.getAgenciaBancaria();
 			out.println(linha);
 			out.close();
 			return true;

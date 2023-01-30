@@ -1,1 +1,0 @@
-cliente1:22342444567:endereco1:esco1:endereco1:civil1:10/11/1456:AgenciaBancaria@6e8cf4c6

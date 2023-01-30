@@ -71,5 +71,9 @@ public class App {
 
             Cliente.gravarClientes(cliente[i]);
         }
+
+        Cliente.lerCliente("22344322345");
+
+        sc.close();
     }
 }
