@@ -1,8 +1,9 @@
 import persist.Persist;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class AgenciaBancaria {
+public class AgenciaBancaria implements Serializable {
     private int numero;
     private String nome;
     private String cidade;
