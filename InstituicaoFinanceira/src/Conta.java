@@ -1,12 +1,13 @@
 import persist.Persist;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public abstract class Conta {
+public abstract class Conta implements Serializable {
     protected int nroDaConta;
     protected double saldoAtual;
     Date dataAtual = new Date();

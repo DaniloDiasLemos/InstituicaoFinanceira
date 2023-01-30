@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.InputMismatchException;
 
-public abstract class Pessoa {
+public abstract class Pessoa implements Serializable {
     private String CPF;
     private String nome;
     private String endereco;
