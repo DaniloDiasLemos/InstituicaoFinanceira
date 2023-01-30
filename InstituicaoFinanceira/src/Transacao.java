@@ -14,7 +14,7 @@ public class Transacao {
         this.dataHoje = data;
     }
 
-    public void sacar(Conta conta, double valor) {
+    public void sacar(double valor) {
         // CONTA INATIVA
         if (!conta.getStatusConta()) {
             System.out.println("Saque negado! Conta Inativa!");
@@ -36,7 +36,7 @@ public class Transacao {
         }
     }
 
-    public void depositar(Conta conta, double valor) {
+    public void depositar(double valor) {
         // CONTA INATIVA
         if (!conta.getStatusConta()) {
             System.out.println("Depósito negado! Conta Inativa!");
@@ -48,7 +48,7 @@ public class Transacao {
         }
     }
 
-    public void consultarSaldo(Conta conta) {
+    public void consultarSaldo() {
         // CONTA INATIVA
         if (!conta.getStatusConta()) {
             System.out.println("Operação negada! Conta Inativa!");
@@ -57,7 +57,7 @@ public class Transacao {
         }
     }
 
-    public void efetuarPagamento(Conta conta, double valor) {
+    public void efetuarPagamento(double valor) {
         // CONTA INATIVA
         if (!conta.getStatusConta()) {
             System.out.println("Operação negada! Conta Inativa!");

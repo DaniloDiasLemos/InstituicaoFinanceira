@@ -9,4 +9,11 @@ public class ContaSalario extends Conta {
         this.limiteTransferencia = limiteTransferencia;
     }
 
+    public void setLimiteSaque(double limiteSaque) {
+        this.limiteSaque = limiteSaque;
+    }
+    public void setLimiteTransferencia(double limiteTransferencia) {
+        this.limiteTransferencia = limiteTransferencia;
+    }
+
 }

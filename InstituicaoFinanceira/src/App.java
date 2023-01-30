@@ -55,15 +55,27 @@ public class App {
             if (tipoConta == 1) {
                 ContaCorrente conta = new ContaCorrente(0, 0, 0, cliente[i].getAgenciaBancaria(),
                         cliente[i]);
+                System.out.println("Qual o limite do cheque especial desta conta? ");
+                conta.setLimiteChequeEspecial(sc.nextDouble());
+                sc.nextLine();
+                System.out.println("Qual a taxa administrativa desta conta? ");
+                conta.setTaxaAdministrativa(sc.nextDouble());
+                sc.nextLine();
                 cliente[i].adicionarConta(conta);
             } else {
                 if (tipoConta == 2) {
-                    Conta conta = new ContaPoupanca(0, 0, cliente[i].getAgenciaBancaria(),
+                    ContaPoupanca conta = new ContaPoupanca(0, 0, cliente[i].getAgenciaBancaria(),
                             cliente[i]);
                     cliente[i].adicionarConta(conta);
                 } else {
-                    Conta conta = new ContaSalario(0, 0, 0, cliente[i].getAgenciaBancaria(),
+                    ContaSalario conta = new ContaSalario(0, 0, 0, cliente[i].getAgenciaBancaria(),
                             cliente[i]);
+                    System.out.println("Qual o limite de saque desta conta? ");
+                    conta.setLimiteSaque(sc.nextDouble());
+                    sc.nextLine();
+                    System.out.println("Qual o limite de transferencia desta conta? ");
+                    conta.setLimiteTransferencia(sc.nextDouble());
+                    sc.nextLine();
                     cliente[i].adicionarConta(conta);
                 }
             }
@@ -71,6 +83,13 @@ public class App {
 
             Cliente.gravarClientes(cliente[i]);
         }
+
+        Transacao tr = new Transacao(cliente[0].contas.get(0), "30/01/2023");
+        tr.depositar(10000);
+        tr.sacar(1000);
+        tr.consultarSaldo();
+        tr.efetuarPagamento(5000);
+        tr.consultarSaldo();
 
         Cliente.lerCliente("22344322345");
 

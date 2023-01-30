@@ -73,7 +73,7 @@ public class Cliente extends Pessoa implements Bonificacao {
                 String estadoCivil = campos[4];
                 String dataNascimento = campos[5];
 
-                System.out.println("Nome: " + nome + " CPF: " + CPF + " Endereço: " + endereco + " Escolaridade: " + escolaridade + " Estado Civil: " + estadoCivil + " Data Nascimento: " + dataNascimento);
+                System.out.println("Nome: " + nome + ", CPF: " + CPF + ", Endereço: " + endereco + ", Escolaridade: " + escolaridade + ", Estado Civil: " + estadoCivil + ", Data Nascimento: " + dataNascimento);
             }
             br.close();
         } catch (Exception e) {
