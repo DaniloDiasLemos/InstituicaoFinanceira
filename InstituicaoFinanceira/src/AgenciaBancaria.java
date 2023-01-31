@@ -34,6 +34,12 @@ public class AgenciaBancaria implements Serializable {
         funcionarios.add(funcionario);
     }
 
+    @Override
+    public String toString() {
+        return "AgenciaBancaria{" + "numero=" + numero + ", nome='" + nome + '\'' + ", cidade='" + cidade + '\''
+                + ", estado='" + estado + '\'' + ", bairro='" + bairro + '\'' + ", contas=" + contas + ", funcionarios=" + funcionarios + '}';
+    }
+
     // GETTER E SETTERS
     public ArrayList<Conta> getContas() {
         return contas;
