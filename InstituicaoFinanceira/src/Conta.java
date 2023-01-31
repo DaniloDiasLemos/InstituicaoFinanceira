@@ -142,4 +142,19 @@ public abstract class Conta implements Serializable {
         } else
             throw new RuntimeException("Erro. Sem registros para salvar!");
     }
+
+    @Override
+    public String toString() {
+        return "Conta{" +
+                "nroDaConta=" + nroDaConta +
+                ", saldoAtual=" + saldoAtual +
+                ", dataAtual=" + dataAtual +
+                ", formatoData=" + formatoData +
+                ", dataAbertura='" + dataAbertura + '\'' +
+                ", dataUltimaMovimentacao='" + dataUltimaMovimentacao + '\'' +
+                ", ativa=" + ativa +
+                ", senha='" + senha + '\'' +
+                ", cliente=" + cliente +
+                '}';
+    }
 }

@@ -44,4 +44,21 @@ public class Funcionario extends Pessoa {
             return this.salario;
         }
     }
+
+    @Override
+    public String toString() {
+        return "Funcionario{" +
+                ", CPF='" + CPF + '\'' +
+                ", nome='" + nome + '\'' +
+                ", nroCarteiraDeTrabalho=" + nroCarteiraDeTrabalho +
+                ", RG=" + RG +
+                ", dataNascimento='" + dataNascimento + '\'' +
+                ", endereco='" + endereco + '\'' +
+                ", sexo='" + sexo + '\'' +
+                ", estadoCivil='" + estadoCivil + '\'' +
+                ", cargo='" + cargo + '\'' +
+                ", salario=" + salario +
+                ", anoDeIngresso=" + anoDeIngresso +
+                '}';
+    }
 }
