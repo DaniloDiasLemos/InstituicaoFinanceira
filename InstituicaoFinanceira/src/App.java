@@ -87,13 +87,19 @@ public class App {
             }
             ;
         }
-
+    
         Transacao tr = new Transacao(cliente[0].contas.get(0), "30/01/2023");
+        System.out.println("\nDepositando 10000 reais na conta");
         tr.depositar(10000);
+        System.out.println("\nSacando 1000 reais da conta");
         tr.sacar(1000);
+        System.out.println("\nConsultando saldo da conta");
         tr.consultarSaldo();
+        System.out.println("\nEfetuando pagamento de 5000 reais");
         tr.efetuarPagamento(5000);
+        System.out.println("\nConsultando saldo da conta");
         tr.consultarSaldo();
+        System.out.println(" ");
 
         sc.close();
     }
