@@ -4,32 +4,18 @@ public class App {
     public static void main(String[] args) throws Exception {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Quantas agencias deseja cadastrar?");
-        int qtdAgencias = sc.nextInt();
-        sc.nextLine();
         System.out.println("Quantos clientes deseja cadastrar?");
         int qtdClientes = sc.nextInt();
         sc.nextLine();
 
-        AgenciaBancaria[] agencia = new AgenciaBancaria[qtdAgencias];
+        AgenciaBancaria[] agencia = new AgenciaBancaria[5];
         Cliente[] cliente = new Cliente[qtdClientes];
 
-        for (int i = 0; i < agencia.length; i++) {
-            agencia[i] = new AgenciaBancaria();
-            System.out.println("Digite o numero da " + (i + 1) + "ª agencia bancaria: ");
-            agencia[i].setNumero(sc.nextInt());
-            sc.nextLine();
-            System.out.println("Digite o nome da " + (i + 1) + "ª agencia bancaria: ");
-            agencia[i].setNome(sc.nextLine());
-            System.out.println("Digite a cidade da " + (i + 1) + "ª agencia bancaria: ");
-            agencia[i].setCidade(sc.nextLine());
-            System.out.println("Digite o estado da " + (i + 1) + "ª agencia bancaria: ");
-            agencia[i].setEstado(sc.nextLine());
-            System.out.println("Digite o bairro da " + (i + 1) + "ª agencia bancaria: ");
-            agencia[i].setBairro(sc.nextLine());
-            System.out.println("");
-            AgenciaBancaria.gravarAgencias(agencia[i]);
-        }
+        agencia[0] = new AgenciaBancaria(1, "Itau", "Uberlandia", "MG", "Santa Monica");
+        agencia[1] = new AgenciaBancaria(2, "Brasil", "Araguari", "MG", "Bronx");
+        agencia[2] = new AgenciaBancaria(3, "Internacional", "Uberaba", "MG", "Santa Helena");
+        agencia[3] = new AgenciaBancaria(4, "Bradesco", "Rio de janeiro", "RJ", "Copa");
+        agencia[4] = new AgenciaBancaria(5, "Nubank", "São Paulo", "SP", "Sul");
 
         for (int i = 0; i < cliente.length; i++) {
             cliente[i] = new Cliente();
@@ -46,7 +32,7 @@ public class App {
             System.out.println("Digite a data de nascimento do " + (i + 1) + "° cliente: ");
             cliente[i].setDataNascimento(sc.nextLine());
             // adiciona uma agencia aleatoria ao cliente
-            cliente[i].setAgenciaBancaria(agencia[(0 + (int) (Math.random() * ((qtdAgencias - 0))))]);
+            cliente[i].setAgenciaBancaria(agencia[(0 + (int) (Math.random() * ((agencia.length - 0))))]);
             System.out.println("");
             // Escolhe tipo de conta do cliente
             System.out.println("Qual tipo de conta do cliente? (1-corrente; 2-poupança; 3-salario)");
@@ -55,6 +41,7 @@ public class App {
             if (tipoConta == 1) {
                 ContaCorrente conta = new ContaCorrente(0, 0, 0, cliente[i].getAgenciaBancaria(),
                         cliente[i]);
+                conta.gravarContas(conta);
                 System.out.println("Qual o limite do cheque especial desta conta? ");
                 conta.setLimiteChequeEspecial(sc.nextDouble());
                 sc.nextLine();
@@ -82,8 +69,6 @@ public class App {
                 }
             }
             ;
-
-            Cliente.gravarClientes(cliente[i]);
         }
 
         Transacao tr = new Transacao(cliente[0].contas.get(0), "30/01/2023");
@@ -92,8 +77,6 @@ public class App {
         tr.consultarSaldo();
         tr.efetuarPagamento(5000);
         tr.consultarSaldo();
-
-        Cliente.lerCliente("22344322345");
 
         sc.close();
     }

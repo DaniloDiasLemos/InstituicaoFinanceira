@@ -32,7 +32,8 @@ public abstract class Conta implements Serializable {
     }
 
     public Conta(double saldoAtual, AgenciaBancaria agenciaBancaria, Cliente cliente1) {
-        this.nroDaConta = random.nextInt(900)+100; // Quando uma conta for criada, o construtor vai gerar um número de conta aleatório de 3 digitos
+        this.nroDaConta = random.nextInt(900) + 100; // Quando uma conta for criada, o construtor vai gerar um número de
+                                                     // conta aleatório de 3 digitos
         this.saldoAtual = saldoAtual;
         this.dataAbertura = formatoData.format(dataAtual);
         this.agencia = agenciaBancaria;
@@ -44,6 +45,14 @@ public abstract class Conta implements Serializable {
 
     public int getNroDaConta() {
         return nroDaConta;
+    }
+
+    public boolean getAtiva() {
+        return ativa;
+    }
+
+    public Date getDataAtual() {
+        return dataAtual;
     }
 
     public void setNroDaConta(int nroDaConta) {
@@ -105,7 +114,7 @@ public abstract class Conta implements Serializable {
 
     public boolean isSenhaCorreta(String senhaDigitada, String senhaArmazenada) {
         PasswordEncoder password = new PasswordEncoder();
-        if (password.stringToBase64(senhaDigitada) == this.senha)
+        if (password.stringToBase64(senhaDigitada).equals(this.senha))
             return true;
         else
             return false;
@@ -119,19 +128,17 @@ public abstract class Conta implements Serializable {
         this.cliente = cliente;
     }
 
-    // Salva as contas em um arquivo binário
-    public void gravarcontas(ArrayList<Conta> contas) {
+    public void gravarContas(Conta contas) {
         boolean salvo = true;
 
-        if (!contas.isEmpty()) {
-            for (Conta c : contas) {
-                salvo = salvo && Persist.gravar(c, this.arquivo);
-            }
+        if (contas != null) {
+            
+            salvo = salvo && Persist.gravarConta(contas);
 
             if (salvo)
-                System.out.println("Sucesso. As contas foram salvas com sucesso!");
+                System.out.println("Sucesso. Conta salva com sucesso!");
             else
-                throw new RuntimeException("Erro. Ocorreu um erro ao salvar as contas, tente novamente!");
+                throw new RuntimeException("Erro. Ocorreu um erro ao salvar a conta, tente novamente!");
         } else
             throw new RuntimeException("Erro. Sem registros para salvar!");
     }

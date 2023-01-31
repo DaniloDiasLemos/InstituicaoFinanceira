@@ -96,17 +96,4 @@ public class AgenciaBancaria implements Serializable {
     public void setBairro(String bairro) {
         this.bairro = bairro;
     }
-
-    // Salva as agências no arquivo binário
-    public static void gravarAgencias(AgenciaBancaria agencia) {
-        boolean salvo = true;
-
-        salvo = salvo && Persist.gravarAgencia(agencia);
-
-        if (salvo)
-            System.out.println("Sucesso. Agencia salva com sucesso!");
-        else
-            throw new RuntimeException("Erro. Ocorreu um erro ao salvar a agencia, tente novamente!");
-    }
-
 }

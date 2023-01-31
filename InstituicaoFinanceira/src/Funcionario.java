@@ -44,21 +44,4 @@ public class Funcionario extends Pessoa {
             return this.salario;
         }
     }
-
-    // Salva os endereços em um arquivo binário
-    public void gravarFuncionarios(ArrayList<Funcionario> funcionarios) {
-        boolean salvo = true;
-
-        if (!funcionarios.isEmpty()) {
-            for (Funcionario f : funcionarios) {
-                salvo = salvo && Persist.gravar(f, this.arquivo);
-            }
-
-            if (salvo)
-                System.out.println("Sucesso. Funcionários salvos com sucesso!");
-            else
-                throw new RuntimeException("Erro. Ocorreu um erro ao salvar os funcionários, tente novamente!");
-        } else
-            throw new RuntimeException("Erro. Sem registros para salvar!");
-    }
 }
