@@ -1,12 +1,11 @@
-import persist.Persist;
-
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Cliente extends Pessoa implements Bonificacao {
     private String escolaridade;
     private AgenciaBancaria agenciaBancaria;
-    private static final String arquivo = "clientes.bin";
     protected List<Conta> contas;
 
     public Cliente() {
@@ -45,21 +44,41 @@ public class Cliente extends Pessoa implements Bonificacao {
         return this.agenciaBancaria;
     }
 
-    // Salva os clientes em um arquivo binário
-    public static void gravarClientes(ArrayList<Cliente> clientes) {
+    // Salva o cliente em um arquivo de texto
+    public static void gravarClientes(Cliente cliente) {
         boolean salvo = true;
 
-        if (!clientes.isEmpty()) {
-            for (Cliente c : clientes) {
-                salvo = salvo && Persist.gravar(c, arquivo);
-            }
+        salvo = salvo && Persist.gravarCliente(cliente);
 
-            if (salvo)
-                System.out.println("Sucesso. Clientes salvos com sucesso!");
-            else
-                throw new RuntimeException("Erro. Ocorreu um erro ao salvar os clientes, tente novamente!");
-        } else
-            throw new RuntimeException("Erro. Sem registros para salvar!");
+        if (salvo)
+            System.out.println("Sucesso. Cliente salvo com sucesso!");
+        else
+            throw new RuntimeException("Erro. Ocorreu um erro ao salvar os clientes, tente novamente!");
+    }
+
+    // Lê o cliente em um arquivo texto
+    public static void lerCliente(String cpf) {
+        try {
+            FileReader ent = new FileReader("src/Clientes/" + cpf + ".txt");
+            BufferedReader br = new BufferedReader(ent);
+            String linha;
+            String[] campos;
+
+            while ((linha = br.readLine()) !=  null) {
+                campos = linha.split(":");
+                String nome = campos[0];
+                String CPF = campos[1];
+                String endereco = campos[2];
+                String escolaridade = campos[3];
+                String estadoCivil = campos[4];
+                String dataNascimento = campos[5];
+
+                System.out.println("Nome: " + nome + ", CPF: " + CPF + ", Endereço: " + endereco + ", Escolaridade: " + escolaridade + ", Estado Civil: " + estadoCivil + ", Data Nascimento: " + dataNascimento);
+            }
+            br.close();
+        } catch (Exception e) {
+            System.out.println("Cliente não encontrado");
+        }
     }
 
     public void darBrindes() {

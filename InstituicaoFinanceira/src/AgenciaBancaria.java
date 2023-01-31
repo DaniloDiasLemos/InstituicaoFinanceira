@@ -1,5 +1,3 @@
-import persist.Persist;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -9,8 +7,6 @@ public class AgenciaBancaria implements Serializable {
     private String cidade;
     private String estado;
     private String bairro;
-
-    private final String arquivo = "agencias.bin";
 
     private ArrayList<Conta> contas;
     private ArrayList<Funcionario> funcionarios;
@@ -36,6 +32,12 @@ public class AgenciaBancaria implements Serializable {
 
     public void adicionarFuncionario(Funcionario funcionario) {
         funcionarios.add(funcionario);
+    }
+
+    @Override
+    public String toString() {
+        return "AgenciaBancaria{" + "numero=" + numero + ", nome='" + nome + '\'' + ", cidade='" + cidade + '\''
+                + ", estado='" + estado + '\'' + ", bairro='" + bairro + '\'' + ", contas=" + contas + ", funcionarios=" + funcionarios + '}';
     }
 
     // GETTER E SETTERS
@@ -96,22 +98,15 @@ public class AgenciaBancaria implements Serializable {
     }
 
     // Salva as agências no arquivo binário
-    public void gravarAgencias(ArrayList<AgenciaBancaria> agencias) {
+    public static void gravarAgencias(AgenciaBancaria agencia) {
         boolean salvo = true;
 
-        if (agencias.isEmpty()) {
-            for (AgenciaBancaria a : agencias) {
-                salvo = salvo && Persist.gravar(a, this.arquivo);
-            }
+        salvo = salvo && Persist.gravarAgencia(agencia);
 
-            if (salvo)
-                System.out.println("Sucesso. Agências salvas com sucesso!");
-            else
-                throw new RuntimeException("Erro. Ocorreu um erro ao salvar as agências, tente novamente!");
-        } else {
-            throw new RuntimeException("Erro. Sem registros para salvar!");
-        }
-
+        if (salvo)
+            System.out.println("Sucesso. Agencia salva com sucesso!");
+        else
+            throw new RuntimeException("Erro. Ocorreu um erro ao salvar a agencia, tente novamente!");
     }
 
 }

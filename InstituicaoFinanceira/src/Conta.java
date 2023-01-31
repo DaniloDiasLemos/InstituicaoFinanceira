@@ -1,5 +1,3 @@
-import persist.Persist;
-
 import java.io.Serializable;
 import java.util.Date;
 import java.text.SimpleDateFormat;
@@ -38,6 +36,7 @@ public abstract class Conta implements Serializable {
         this.saldoAtual = saldoAtual;
         this.dataAbertura = formatoData.format(dataAtual);
         this.agencia = agenciaBancaria;
+        this.ativa = true;
         cliente = new ArrayList<>();
         cliente.add(cliente1);
         agenciaBancaria.adicionarConta(this);
@@ -93,10 +92,6 @@ public abstract class Conta implements Serializable {
 
     public void setStatusConta(boolean status) {
         this.ativa = status;
-    }
-
-    public boolean isAtiva() {
-        return ativa;
     }
 
     public String getSenha() {
