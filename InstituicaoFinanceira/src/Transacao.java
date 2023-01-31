@@ -14,6 +14,7 @@ public class Transacao {
     public Transacao(Conta conta, String data) {
         this.conta = conta;
         this.dataHoje = data;
+        this.meio = "Internet Banking";
     }
 
     public void sacar(double valor) {
