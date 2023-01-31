@@ -12,7 +12,6 @@ public abstract class Pessoa implements Serializable {
     }
 
     public Pessoa(String CPF, String nome, String endereco, String estadoCivil, String dataNascimento) {
-        this.cpfValido(CPF);
         this.CPF = CPF;
         this.nome = nome;
         this.endereco = endereco;
@@ -78,7 +77,10 @@ public abstract class Pessoa implements Serializable {
     }
 
     public void setCPF(String CPF) {
-        this.CPF = CPF;
+        if (this.cpfValido(CPF))
+            this.CPF = CPF;
+        else
+            throw new RuntimeException("CPF inválido");
     }
 
     public String getNome() {
