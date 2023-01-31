@@ -1,5 +1,3 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +19,12 @@ public class Cliente extends Pessoa implements Bonificacao {
 
     public Cliente(String CPF, String nome) {
         super(CPF, nome);
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" + "escolaridade='" + escolaridade + '\'' + ", agenciaBancaria=" + agenciaBancaria
+                + ", contas=" + contas + '}';
     }
 
     public void adicionarConta(Conta conta) {

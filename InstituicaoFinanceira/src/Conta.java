@@ -2,6 +2,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -15,8 +16,6 @@ public abstract class Conta implements Serializable {
     protected AgenciaBancaria agencia;
     protected boolean ativa;
     private String senha;
-
-    private final String arquivo = "contas.bin";
 
     /*
      * Toda conta bancária deve ter no mínimo um cliente associado. No entanto, uma
@@ -145,16 +144,31 @@ public abstract class Conta implements Serializable {
 
     @Override
     public String toString() {
-        return "Conta{" +
-                "nroDaConta=" + nroDaConta +
-                ", saldoAtual=" + saldoAtual +
-                ", dataAtual=" + dataAtual +
-                ", formatoData=" + formatoData +
-                ", dataAbertura='" + dataAbertura + '\'' +
-                ", dataUltimaMovimentacao='" + dataUltimaMovimentacao + '\'' +
-                ", ativa=" + ativa +
-                ", senha='" + senha + '\'' +
-                ", cliente=" + cliente +
-                '}';
+        if (this.cliente.size() == 1) {
+            return "Conta{" +
+                    "nroDaConta=" + nroDaConta +
+                    ", saldoAtual=" + saldoAtual +
+                    ", dataAtual=" + dataAtual +
+                    ", formatoData=" + formatoData +
+                    ", dataAbertura='" + dataAbertura + '\'' +
+                    ", dataUltimaMovimentacao='" + dataUltimaMovimentacao + '\'' +
+                    ", ativa=" + ativa +
+                    ", senha='" + senha + '\'' +
+                    ", cliente=" + cliente.get(0).getNome() +
+                    '}';
+        }else{
+            return "Conta{" +
+                    "nroDaConta=" + nroDaConta +
+                    ", saldoAtual=" + saldoAtual +
+                    ", dataAtual=" + dataAtual +
+                    ", formatoData=" + formatoData +
+                    ", dataAbertura='" + dataAbertura + '\'' +
+                    ", dataUltimaMovimentacao='" + dataUltimaMovimentacao + '\'' +
+                    ", ativa=" + ativa +
+                    ", senha='" + senha + '\'' +
+                    ", cliente=" + cliente.get(0).getNome() + 
+                    ", cliente=" + cliente.get(1).getNome() + 
+                    '}';
+        }
     }
 }

@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
@@ -8,14 +9,22 @@ public class App {
         int qtdClientes = sc.nextInt();
         sc.nextLine();
 
-        AgenciaBancaria[] agencia = new AgenciaBancaria[5];
+        AgenciaBancaria[] agencia = new AgenciaBancaria[2];
+        Gerente[] gerente = new Gerente[2];
         Cliente[] cliente = new Cliente[qtdClientes];
+        ArrayList<Funcionario> funcionarios = new ArrayList<>();
 
         agencia[0] = new AgenciaBancaria(1, "Itau", "Uberlandia", "MG", "Santa Monica");
         agencia[1] = new AgenciaBancaria(2, "Brasil", "Araguari", "MG", "Bronx");
-        agencia[2] = new AgenciaBancaria(3, "Internacional", "Uberaba", "MG", "Santa Helena");
-        agencia[3] = new AgenciaBancaria(4, "Bradesco", "Rio de janeiro", "RJ", "Copa");
-        agencia[4] = new AgenciaBancaria(5, "Nubank", "São Paulo", "SP", "Sul");
+
+        gerente[0] = new Gerente("11245455684", "Jose Juao", 123, 123465, "01/10/1880", "Rua alvorada", "Masculino",
+                "Solteiro", "Gerente", 8000, 2000, "01/01/2000", agencia[0], true);
+        funcionarios.add(gerente[0]);
+        agencia[0].setFuncionarios(funcionarios);
+        gerente[1] = new Gerente("11245455685", "Paula Juao", 1234, 1234656, "01/10/1999", "Rua alvorada", "Feminino",
+                "Casada", "Gerente", 80000, 2000, "01/01/2000", agencia[1], true);
+        funcionarios.add(gerente[1]);
+        agencia[1].setFuncionarios(funcionarios);
 
         for (int i = 0; i < cliente.length; i++) {
             cliente[i] = new Cliente();
@@ -41,7 +50,6 @@ public class App {
             if (tipoConta == 1) {
                 ContaCorrente conta = new ContaCorrente(0, 0, 0, cliente[i].getAgenciaBancaria(),
                         cliente[i]);
-                conta.gravarContas(conta);
                 System.out.println("Qual o limite do cheque especial desta conta? ");
                 conta.setLimiteChequeEspecial(sc.nextDouble());
                 sc.nextLine();
@@ -50,11 +58,16 @@ public class App {
                 sc.nextLine();
                 System.out.println("Cadastre a senha para esse cliente: ");
                 conta.setSenha(sc.nextLine());
+                conta.gravarContas(conta);
                 cliente[i].adicionarConta(conta);
             } else {
                 if (tipoConta == 2) {
                     ContaPoupanca conta = new ContaPoupanca(0, 0, cliente[i].getAgenciaBancaria(),
                             cliente[i]);
+                    System.out.println("Cadastre a senha para esse cliente: ");
+                    conta.setSenha(sc.nextLine());
+                    cliente[i].adicionarConta(conta);
+                    conta.gravarContas(conta);
                     cliente[i].adicionarConta(conta);
                 } else {
                     ContaSalario conta = new ContaSalario(0, 0, 0, cliente[i].getAgenciaBancaria(),
@@ -65,6 +78,10 @@ public class App {
                     System.out.println("Qual o limite de transferencia desta conta? ");
                     conta.setLimiteTransferencia(sc.nextDouble());
                     sc.nextLine();
+                    System.out.println("Cadastre a senha para esse cliente: ");
+                    conta.setSenha(sc.nextLine());
+                    cliente[i].adicionarConta(conta);
+                    conta.gravarContas(conta);
                     cliente[i].adicionarConta(conta);
                 }
             }

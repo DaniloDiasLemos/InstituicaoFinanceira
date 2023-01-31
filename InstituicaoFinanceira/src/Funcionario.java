@@ -1,9 +1,7 @@
 import java.time.Year;
-import java.util.ArrayList;
 
 public class Funcionario extends Pessoa {
 
-    private final String arquivo = "funcionarios.bin";
     protected String CPF;
     protected String nome;
     protected int nroCarteiraDeTrabalho;
