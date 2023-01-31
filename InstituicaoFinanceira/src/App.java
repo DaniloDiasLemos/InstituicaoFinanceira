@@ -61,6 +61,8 @@ public class App {
                 System.out.println("Qual a taxa administrativa desta conta? ");
                 conta.setTaxaAdministrativa(sc.nextDouble());
                 sc.nextLine();
+                System.out.println("Cadastre a senha para esse cliente: ");
+                conta.setSenha(sc.nextLine());
                 cliente[i].adicionarConta(conta);
             } else {
                 if (tipoConta == 2) {
